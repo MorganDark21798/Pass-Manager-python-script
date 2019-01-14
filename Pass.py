@@ -15,6 +15,8 @@ log = Login("", "")
 logid = input("Enter your user ID: ")
 logpass = input("Enter your password: ")
 log.authenticate()
+
+
 import mysql.connector
 
 mydb = mysql.connector.connect(
@@ -26,21 +28,16 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+sql = "INSERT INTO customers (username, password) VALUES (%s, %s)"
 val = [
-  ('Peter', 'Lowstreet 4'),
-  ('Amy', 'Apple st 652'),
-  ('Hannah', 'Mountain 21'),
-  ('Michael', 'Valley 345'),
-  ('Sandy', 'Ocean blvd 2'),
-  ('Betty', 'Green Grass 1'),
-  ('Richard', 'Sky st 331'),
-  ('Susan', 'One way 98'),
-  ('Vicky', 'Yellow Garden 2'),
-  ('Ben', 'Park Lane 38'),
-  ('William', 'Central st 954'),
-  ('Chuck', 'Main Road 989'),
-  ('Viola', 'Sideway 1633')
+  ('Peter', 'ADMIN1'),
+  ('Amy', 'ADMIN2'),
+  ('Hannah', 'ADMIN3'),
+  ('Michael', 'ADMIN4'),
+  ('Sandy', 'ADMIN5'),
+  ('Betty', 'ADMIN6'),
+  ('Richard', 'ADMIN7'),
+  ('Susan', 'ADMIN8')
 ]
 
 mycursor.executemany(sql, val)
