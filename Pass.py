@@ -1,47 +1,34 @@
-class Login:
-    error = None
-    def __init__(self, uid, passw):
-        self.uid = "198"
-        self.passw = "ADMIN"
-        Login.error = "Enter a valid user id and password"
-        
+def askUser():
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+    checkPass(username, password)
 
-    def authenticate(self):
-        if (self.uid == logid and self.passw == logpass):
-            print ("Login successful")
-        else:
-            print (Login.error)
-log = Login("", "")
-logid = input("Enter your user ID: ")
-logpass = input("Enter your password: ")
-log.authenticate()
+def checkPass(use, pwd):
+    if use == ("ID8") and pwd == ("admin"):
+        login(use)
+    else:
+        print ("Your username and/or password was incorrect")
+        askUser()
 
+def login(use):
+    print ("Welcome " + use)
+    print ("You have successfully logged in!")
+    askCom()
 
-import mysql.connector
+def askCom():
+    command = input("Enter your command: ")
+    if command == ("log off") or command == ("quit"):
+        username = ("")
+        password = ("")
+        print ("You have logged off")
+        askUser()
+    if command == ("what is this code?") :
+        username = ("")
+        password = ("")
+        print ("Python 3")
+        askUser()
+    else:
+        print ("Unknown command")
+        askCom()
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  passwd="yourpassword",
-  database="mydatabase"
-)
-
-mycursor = mydb.cursor()
-
-sql = "INSERT INTO customers (username, password) VALUES (%s, %s)"
-val = [
-  ('Peter', 'ADMIN1'),
-  ('Amy', 'ADMIN2'),
-  ('Hannah', 'ADMIN3'),
-  ('Michael', 'ADMIN4'),
-  ('Sandy', 'ADMIN5'),
-  ('Betty', 'ADMIN6'),
-  ('Richard', 'ADMIN7'),
-  ('Susan', 'ADMIN8')
-]
-
-mycursor.executemany(sql, val)
-
-mydb.commit()
-
-print(mycursor.rowcount, "was inserted.") 
+askUser()
